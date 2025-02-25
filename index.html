@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>diagonal scroll</title>
+  <title>Rice Munchers</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 
 <style type="text/css">
   body {
     font-family: "Open Sans", sans-serif;
-    background: #E9D9B7;
+   background: #E9D9B7 url('rice-logo.png') no-repeat center center;
+background-size: cover;
+
     color: #2E1414;
     opacity: 0;
     font-weight: 300;
@@ -16,19 +18,7 @@
     position: relative; /* To make sure the image can be positioned relative to the body */
   }
 
-  /* Add base64 image to the top-right corner */
-  body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;  /* Set width of the image */
-    height: 100px; /* Set height of the image */
-  background-image: url('rice-logo.png');
 
-    background-size: cover;
-    background-position: center;
-  }
 
   #content {
     width: 35em;
