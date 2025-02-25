@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>diagonal scroll</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+
+<style type="text/css">
+  body {
+    font-family: "Open Sans", sans-serif;
+    background: #E9D9B7;
+    color: #2E1414;
+    opacity: 0;
+    font-weight: 300;
+    line-height: 1.2em;
+    position: relative; /* To make sure the image can be positioned relative to the body */
+  }
+
+  /* Add base64 image to the top-right corner */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;  /* Set width of the image */
+    height: 100px; /* Set height of the image */
+  background-image: url('rice-logo.png');
+
+    background-size: cover;
+    background-position: center;
+  }
+
+  #content {
+    width: 35em;
+    padding: 2em 0 2em 2em;
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  #content p, #content ul, #content ol {
+    margin: 0;
+    padding: 1em 0;
+  }
+  #content li {
+    margin: 0;
+    padding: 0;
+  }
+  #content blockquote .wrapliner {
+    position: relative;
+    padding-left: 0;
+  }
+  #content blockquote .wrapliner:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -1.5em;
+    height: 1.2em;
+    width: 3px;
+    background: #FEAB1B;
+    transform: skew(47deg);
+  }
+  #content a {
+    color: #FF3838;
+  }
+  #content a:hover {
+    color: #9e0000;
+  }
+  #content a, #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    font-weight: 400;
+  }
+  #content strong {
+    font-weight: 800;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 0;
+    padding: 1em 0;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin: 0;
+    padding: 1em 0;
+  }
+
+  h3 {
+    font-size: 1.3333333333em;
+    margin: 0;
+    padding: 1em 0;
+  }
+
+  h4 {
+    font-size: 1.25em;
+    margin: 0;
+    padding: 1em 0;
+  }
+
+  h5 {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 1em 0;
+  }
+
+  h6 {
+    font-size: 1.1666666667em;
+    margin: 0;
+    padding: 1em 0;
+  }
+
+  .wrapliner {
+    display: block;
+    position: relative;
+    background: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 0 100px 0 40px;
+  }
+
+  .wrapliner .wrapliner {
+    padding: 0;
+  }
+
+  .wrap_line_1 {
+  left: 0px;
+}
+
+.wrap_line_2 {
+  left: 20px;
+}
+
+.wrap_line_3 {
+  left: 40px;
+}
+
+.wrap_line_4 {
+  left: 60px;
+}
+
+.wrap_line_5 {
+  left: 80px;
+}
+
+.wrap_line_6 {
+  left: 100px;
+}
+
+.wrap_line_7 {
+  left: 120px;
+}
+
+.wrap_line_8 {
+  left: 140px;
+}
+
+.wrap_line_9 {
+  left: 160px;
+}
+
+.wrap_line_10 {
+  left: 180px;
+}
+
+.wrap_line_11 {
+  left: 200px;
+}
+
+.wrap_line_12 {
+  left: 220px;
+}
+
+.wrap_line_13 {
+  left: 240px;
+}
+
+.wrap_line_14 {
+  left: 260px;
+}
+
+.wrap_line_15 {
+  left: 280px;
+}
+
+.wrap_line_16 {
+  left: 300px;
+}
+
+.wrap_line_17 {
+  left: 320px;
+}
+
+.wrap_line_18 {
+  left: 340px;
+}
+
+.wrap_line_19 {
+  left: 360px;
+}
+
+.wrap_line_20 {
+  left: 380px;
+}
+
+.wrap_line_21 {
+  left: 400px;
+}
+
+.wrap_line_22 {
+  left: 420px;
+}
+
+.wrap_line_23 {
+  left: 440px;
+}
+
+.wrap_line_24 {
+  left: 460px;
+}
+
+.wrap_line_25 {
+  left: 480px;
+}
+
+.wrap_line_26 {
+  left: 500px;
+}
+
+.wrap_line_27 {
+  left: 520px;
+}
+
+.wrap_line_28 {
+  left: 540px;
+}
+
+.wrap_line_29 {
+  left: 560px;
+}
+
+.wrap_line_30 {
+  left: 580px;
+}
+
+.wrap_line_31 {
+  left: 600px;
+}
+
+.wrap_line_32 {
+  left: 620px;
+}
+
+.wrap_line_33 {
+  left: 640px;
+}
+
+.wrap_line_34 {
+  left: 660px;
+}
+
+.wrap_line_35 {
+  left: 680px;
+}
+
+.wrap_line_36 {
+  left: 700px;
+}
+
+.wrap_line_37 {
+  left: 720px;
+}
+
+.wrap_line_38 {
+  left: 740px;
+}
+
+.wrap_line_39 {
+  left: 760px;
+}
+
+.wrap_line_40 {
+  left: 780px;
+}
+
+.wrap_line_41 {
+  left: 800px;
+}
+
+.wrap_line_42 {
+  left: 820px;
+}
+
+.wrap_line_43 {
+  left: 840px;
+}
+
+.wrap_line_44 {
+  left: 860px;
+}
+
+.wrap_line_45 {
+  left: 880px;
+}
+
+.wrap_line_46 {
+  left: 900px;
+}
+
+.wrap_line_47 {
+  left: 920px;
+}
+
+.wrap_line_48 {
+  left: 940px;
+}
+
+.wrap_line_49 {
+  left: 960px;
+}
+
+.wrap_line_50 {
+  left: 980px;
+}
+
+.wrap_line_51 {
+  left: 1000px;
+}
+
+.wrap_line_52 {
+  left: 1020px;
+}
+
+.wrap_line_53 {
+  left: 1040px;
+}
+
+.wrap_line_54 {
+  left: 1060px;
+}
+
+.wrap_line_55 {
+  left: 1080px;
+}
+
+.wrap_line_56 {
+  left: 1100px;
+}
+
+.wrap_line_57 {
+  left: 1120px;
+}
+
+.wrap_line_58 {
+  left: 1140px;
+}
+
+.wrap_line_59 {
+  left: 1160px;
+}
+
+.wrap_line_60 {
+  left: 1180px;
+}
+
+.wrap_line_61 {
+  left: 1200px;
+}
+
+.wrap_line_62 {
+  left: 1220px;
+}
+
+.wrap_line_63 {
+  left: 1240px;
+}
+
+.wrap_line_64 {
+  left: 1260px;
+}
+
+.wrap_line_65 {
+  left: 1280px;
+}
+
+.wrap_line_66 {
+  left: 1300px;
+}
+
+.wrap_line_67 {
+  left: 1320px;
+}
+
+.wrap_line_68 {
+  left: 1340px;
+}
+
+.wrap_line_69 {
+  left: 1360px;
+}
+
+.wrap_line_70 {
+  left: 1380px;
+}
+
+.wrap_line_71 {
+  left: 1400px;
+}
+
+.wrap_line_72 {
+  left: 1420px;
+}
+
+.wrap_line_73 {
+  left: 1440px;
+}
+
+.wrap_line_74 {
+  left: 1460px;
+}
+
+.wrap_line_75 {
+  left: 1480px;
+}
+
+.wrap_line_76 {
+  left: 1500px;
+}
+
+.wrap_line_77 {
+  left: 1520px;
+}
+
+.wrap_line_78 {
+  left: 1540px;
+}
+
+.wrap_line_79 {
+  left: 1560px;
+}
+
+.wrap_line_80 {
+  left: 1580px;
+}
+
+.wrap_line_81 {
+  left: 1600px;
+}
+
+.wrap_line_82 {
+  left: 1620px;
+}
+
+.wrap_line_83 {
+  left: 1640px;
+}
+
+.wrap_line_84 {
+  left: 1660px;
+}
+
+.wrap_line_85 {
+  left: 1680px;
+}
+
+.wrap_line_86 {
+  left: 1700px;
+}
+
+.wrap_line_87 {
+  left: 1720px;
+}
+
+.wrap_line_88 {
+  left: 1740px;
+}
+
+.wrap_line_89 {
+  left: 1760px;
+}
+
+.wrap_line_90 {
+  left: 1780px;
+}
+
+.wrap_line_91 {
+  left: 1800px;
+}
+
+.wrap_line_92 {
+  left: 1820px;
+}
+
+.wrap_line_93 {
+  left: 1840px;
+}
+
+.wrap_line_94 {
+  left: 1860px;
+}
+
+.wrap_line_95 {
+  left: 1880px;
+}
+
+.wrap_line_96 {
+  left: 1900px;
+}
+
+.wrap_line_97 {
+  left: 1920px;
+}
+
+.wrap_line_98 {
+  left: 1940px;
+}
+
+.wrap_line_99 {
+  left: 1960px;
+}
+
+.wrap_line_100 {
+  left: 1980px;
+}
+  
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,300,800,400' rel='stylesheet' type='text/css'>
+<div id="content">
+  <h1>Rice Munchers</h1>
+  <h3> We are the <strong>best</strong>
+    band ever
+  </h3>
+  <p>
+   We enjoy rice
+  </p>
+  <h2>Our musicians</h2>
+
+  <ul>
+    <strong>Guitarist: Aarav Jajoo</strong>
+    <li>He is a very good guitarist and is a Ed Sheeran fan</li>
+    <strong>Pianist: Kayden</strong>
+    <li>He is very good in piano and hates getting his bottle stolen</li>
+  </ul>
+  <p>Why are we so good?</p>
+  <ol>
+    This is a list of reasons why we are good
+    (only a few/million reasons)
+    <li>Our music is very good</li>
+    <li>We play ins</li>
+    <li>Aenean commodo ligula eget</li>
+    <li>Cum sociis natoque penatibus et magnis</li>
+  </ol>
+  <h2>Aenean commodo ligula eget dolor aenean massa</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </p>
+  <h3>
+    Cum sociis natoque penatibus dis parturient mus
+  </h3>
+  <h4>Donec quam felis ultricies nec pellentesque</h4>
+  <h6>
+    In enim justo rhoncus ut imperdiet a venenatis vitae justo
+  </h6>
+  <p>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </p>
+  <blockquote>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In <em>em</em> dictum felis eu pede mollis pretium.
+  </blockquote>
+  <p>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </p>
+</div>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script type="text/javascript">
+    (function($) { 
+  'use strict';
+  $.fn.wrapLines = function(options) {
+    var options = $.extend({
+      lineWrap: 'span',
+      lineClassPrefix: 'wrapliner wrap_line_',
+      wordClassPrefix: 'w_line_',
+      index: 0,
+      offsetTop: 0,
+      offsetLeft: 0
+    }, options);
+    return this.each(function() {
+      options.index = 0;
+      options.offset = 0;
+      var parentElm = $(this);
+      var elmText = $(parentElm).html();
+      $(parentElm).html(function(ind, htm) {
+        var $repText = '<' + options.lineWrap + '>' + elmText.replace(/(<\s*.*?[^>]*>(.*?)<\s*\s*.*?>)|(\s+)/ig, '$1 </' + options.lineWrap + '><' + options.lineWrap + '>');
+        $repText = $repText + '</' + options.lineWrap + '>';
+        return $repText;
+      });
+      $(options.lineWrap, parentElm).each(function() {
+        var spanOffset = $(this).offset();
+        if (spanOffset.top > options.offsetTop) {
+          options.offsetTop = spanOffset.top;
+          options.index++;
+        }
+        $(this).addClass(options.wordClassPrefix + options.index);
+      });
+
+      for (var x = 1; x <= options.index; x++) {
+        $('.' + options.wordClassPrefix + x, parentElm)
+          .wrapAll('<' + options.lineWrap + ' class="' + options.lineClassPrefix + x + '" />');
+        var innerText = $('.' + options.lineClassPrefix + x, parentElm).text();
+        $('.' + options.lineClassPrefix + x, parentElm).text(function() {
+          return innerText;
+        });
+      }
+    });
+  };
+})(jQuery);
+
+var $window = $(window);
+var $body = $('body');
+var con = $('#content');
+var contH = con.outerHeight();
+
+var scalePage = function() {
+  winH = $window.height();
+  con.css({
+    paddingBottom: winH
+  });
+  contH = con.outerHeight();
+
+  $body.css({
+    height: contH - winH / 2
+  });
+
+};
+
+var initPage = function() {
+
+  var diagonalBlocks = $('p, h1, h2, h3, h4, h5, h6, fieldset, blockquote, ul, ol',con);
+  var heights = 0;
+  var heightsInner = 0;  
+  diagonalBlocks.wrapLines();  
+  var diagonalInline = $('li', con);
+  diagonalInline.wrapLines();  
+  diagonalBlocks.each(function() {
+    var $this = $(this);
+    var ind = $this.index();
+    var thisHeight = $this.outerHeight(true);
+    if ($this.is(':first-child')) {
+      heightsInner = 0;
+    }
+    if (!Modernizr.csstransforms3d && Modernizr.csstransforms) {
+      $this.css({
+        transform: 'translate(' + heightsInner + 'px,0)'
+      });
+    } else if (Modernizr.csstransforms3d && Modernizr.csstransforms) {
+      $this.css({
+        transform: 'translate3d(' + heightsInner + 'px,0,0)'
+      });
+    }
+    if (!Modernizr.csstransforms) {
+      $this.css({
+        marginLeft: heightsInner
+      });
+    }
+    heightsInner += thisHeight;
+  });
+  
+  $window.on('touchmove scroll', function() {
+    winScroll = $window.scrollTop() * -1;
+    if (!Modernizr.csstransforms3d && Modernizr.csstransforms) {
+      con.css({
+        transform: 'translate(' + winScroll + 'px,' + winScroll + 'px)'
+      });
+    } else if (Modernizr.csstransforms3d && Modernizr.csstransforms) {
+      con.css({
+        transform: 'translate3d(' + winScroll + 'px,' + winScroll + 'px,0)'
+      });
+    }
+    if (!Modernizr.csstransforms) {
+      con.css({
+        left: winScroll,
+        top: winScroll
+      });
+    }
+  });
+};
+
+$window.trigger('scroll resize');
+
+scalePage();
+initPage();
+$body.css({opacity: 1});
+    
+  </script> 
+
+</body>
+</html>
+
